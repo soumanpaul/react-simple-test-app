@@ -22,15 +22,30 @@ app.use('/movies', moviesRoute);
 let mongoDB = process.env.MONGODB_URL || "mongodb://localhost:27017/mymoviesdb";
 mongoose.connect(
 	mongoDB,
-	{ useNewUrlParser: true }
+	{ useNewUrlParser: true, useUnifiedTopology: true }
 );
 mongoose.Promise = global.Promise;
 
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB Connection Error...'));
 
 
-let port = 3000;
+module.exports = app;
 
-app.listen(process.env.PORT || port, () => {
-	console.log(`Server now up and running on port ${port}`);
-});
+// let port = 3000;
+
+// app.listen(process.env.PORT || port, () => {
+// 	console.log(`Server now up and running on port ${port}`);
+// });
+
+
+
+// Learn more or give us feedback
+// const app = require('./index');
+
+// let port = 3300;
+
+// const server = app.listen(process.env.PORT || port, () => {
+// 	console.log(`Server now up and running on port ${port}`);
+// });
+
+// module.exports = server;
